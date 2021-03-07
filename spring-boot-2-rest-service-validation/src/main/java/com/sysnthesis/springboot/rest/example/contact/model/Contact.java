@@ -43,6 +43,7 @@ public class Contact {
 	@NotBlank(message = "Country is mandatory")
 	private String country;
 	
+	
 	public Contact() {
 		super();
 		// TODO Auto-generated constructor stub

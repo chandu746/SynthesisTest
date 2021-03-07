@@ -10,4 +10,5 @@ public class ContactNotFoundException extends RuntimeException {
 		super(exception);
 	}
 
+	
 }

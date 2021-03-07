@@ -13,6 +13,7 @@ public class ExceptionResponse {
     this.details = details;
   }
 
+  
   public Date getTimestamp() {
     return timestamp;
   }

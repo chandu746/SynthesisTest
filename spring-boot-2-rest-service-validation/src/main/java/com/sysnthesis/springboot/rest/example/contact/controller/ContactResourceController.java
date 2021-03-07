@@ -1,4 +1,4 @@
-package com.sysnthesis.springboot.rest.example.contact;
+package com.sysnthesis.springboot.rest.example.contact.controller;
 
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
@@ -28,18 +28,18 @@ import com.sysnthesis.springboot.rest.example.exception.ContactNotFoundException
 
 
 @RestController
-public class ContactResource {
+public class ContactResourceController {
 	
 	@Autowired
 	private ContactRepository contactRepository;
 	
 	
-	@GetMapping("/contacts")
+	@GetMapping("/getContacts")
 	public List<Contact> retrieveAllContacts() {
 		return contactRepository.findAll();
 	}
 
-	@GetMapping("/contacts/{id}")
+	@GetMapping("/contactsById/{id}")
 	public EntityModel<Contact> retrieveContact(@PathVariable long id) {
 		Optional<Contact> contact = contactRepository.findById(id);
 
@@ -56,12 +56,12 @@ public class ContactResource {
 		return resource;
 	}
 
-	@DeleteMapping("/contacts/{id}")
+	@DeleteMapping("/deleteContacts/{id}")
 	public void deleteContact(@PathVariable long id) {
 		contactRepository.deleteById(id);
 	}
 
-	@PostMapping("/contacts")
+	@PostMapping("/saveContacts")
 	public ResponseEntity<Object> createContact(@Valid @RequestBody Contact contact) {
 		
 		Contact savedContact = contactRepository.save(contact);
@@ -73,7 +73,7 @@ public class ContactResource {
 
 	}
 	
-	@PutMapping("/contacts/{id}")
+	@PutMapping("/updateContacts/{id}")
 	public ResponseEntity<Object> updateContact(@Valid @RequestBody Contact contact, @PathVariable long id) {
 
 		Optional<Contact> contactOptional = contactRepository.findById(id);
