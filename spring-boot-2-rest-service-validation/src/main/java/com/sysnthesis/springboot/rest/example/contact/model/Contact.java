@@ -1,4 +1,4 @@
-package com.sysnthesis.springboot.rest.example.contact;
+package com.sysnthesis.springboot.rest.example.contact.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

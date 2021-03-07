@@ -22,6 +22,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import com.sysnthesis.springboot.rest.example.contact.model.Contact;
+import com.sysnthesis.springboot.rest.example.contact.repository.ContactRepository;
+import com.sysnthesis.springboot.rest.example.exception.ContactNotFoundException;
+
 
 @RestController
 public class ContactResource {
@@ -59,6 +63,7 @@ public class ContactResource {
 
 	@PostMapping("/contacts")
 	public ResponseEntity<Object> createContact(@Valid @RequestBody Contact contact) {
+		
 		Contact savedContact = contactRepository.save(contact);
 
 		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
